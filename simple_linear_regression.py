@@ -34,7 +34,7 @@ gradient_descent = 0.01
 train_loop = 1000
 
 """
-We have this sample learning model: W * x + b,  where x is an array of inputs to train, W & b are model parameters to tweak later.
+We have this sample learning model: W * x + b,  where x is an array of inputs to train, W = Weight parameter & b = bias paramater.
 """
 # Define the parameters
 W = tf.Variable([init_w], tf.float32)
