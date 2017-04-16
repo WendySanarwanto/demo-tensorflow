@@ -14,8 +14,8 @@ def initialise_nn_models():
     # The linear regression model is defined as in this following equation: sum(Wij * xj + bi)
     # where i = length of flatten vector of 28x28 image and j = number of possible outcome that NN should identify/classify
     # W is the weight parameters, represents the neurons in the Hidden Layer & b is the bias parameter. 
-    W = tf.Variable(tf.zeros([image_flatten_vector_length, num_possible_outcome]))
-    b = tf.Variable(tf.zeros(num_possible_outcome))
+    W = tf.Variable(tf.zeros([image_flatten_vector_length, num_possible_outcome]), name="Weights")
+    b = tf.Variable(tf.zeros(num_possible_outcome), name="Biases")
 
     # 3. Define linear model of Wij * xj + bi 
     linear_model = tf.matmul(x, W) + b
@@ -41,7 +41,7 @@ def initialise_nn_models():
 def do_training_nn(training_model, x, y):
     session = tf.InteractiveSession()
     tf.global_variables_initializer().run()
-
+    
     for _ in range(epochs):
         # Pick batches of inputs & outputs data from the pre-loaded MNIST data
         batch_xs, batch_ys = mnist.train.next_batch(batch_size)
